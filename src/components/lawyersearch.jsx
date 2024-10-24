@@ -68,7 +68,7 @@ const LawyerSearch = () => {
       <main className="w-full px-4 sm:px-8 mt-8 sm:mt-16">
         <div className="flex flex-col lg:flex-row justify-between items-center w-full">
           <div className="w-full lg:w-2/3 xl:w-3/4 mb-8 lg:mb-0">
-            <h1 className="text-4xl sm:text-6xl font-light text-gray-900 mb-6">
+            <h1 className="text-4xl sm:text-6xl font-light text-gray-900 mb-6 text-left">
               Find local{' '}
               <span className="font-medium text-blue-600 transition-all duration-300">
                 {specialties[currentSpecialty]}
@@ -129,7 +129,7 @@ const LawyerSearch = () => {
             legal professionals. Available nationwide. Free for everyone.
           </p>
           <p className="text-base sm:text-lg text-gray-600">
-            Instantly search through millions of legal cases and find the right attorney for
+            Instantly search through thousands of lawyers and find the right attorney for
             your needs.
           </p>
         </div>
