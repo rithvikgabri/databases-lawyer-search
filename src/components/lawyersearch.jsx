@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Database, Search, MapPin } from 'lucide-react';
+import { Database, Search, MapPin, Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const LawyerSearch = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const specialties = [
     "personal injury",
@@ -36,23 +37,37 @@ const LawyerSearch = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-yellow-50 via-blue-50 to-purple-50 font-sans font-light">
-      <nav className="w-full px-4 sm:px-8 py-4 flex justify-between items-center">
+      <nav className="w-full px-4 sm:px-8 py-4 flex justify-between items-center bg-white shadow-sm">
         <div className="flex items-center gap-2">
           <Database className="w-6 h-6 text-gray-900" />
           <span className="text-xl text-gray-900">Data<span className="font-bold">BASES</span></span>
         </div>
         
-        <div className="flex items-center gap-2 sm:gap-4">
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Browse</button>
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Help</button>
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">List your practice</button>
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Log in</button>
-          <button className="bg-yellow-300 px-4 py-1 sm:px-6 sm:py-2 rounded-lg text-gray-900 text-sm sm:text-base">Sign up</button>
+        <div className="hidden md:flex items-center gap-4">
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Browse</button>
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Help</button>
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">List your practice</button>
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Log in</button>
+          <button className="bg-yellow-300 px-6 py-2 rounded-lg text-gray-900">Sign up</button>
         </div>
+
+        <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </nav>
 
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-md">
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Browse</button>
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Help</button>
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">List your practice</button>
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Log in</button>
+          <button className="w-full px-4 py-2 text-left bg-yellow-300 hover:bg-yellow-400">Sign up</button>
+        </div>
+      )}
+
       <main className="w-full px-4 sm:px-8 mt-8 sm:mt-16">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center">
+        <div className="flex flex-col lg:flex-row justify-between items-center">
           <div className="w-full lg:w-2/3 mb-8 lg:mb-0">
             <h1 className="text-4xl sm:text-6xl font-light text-gray-900 mb-6">
               Find local{' '}

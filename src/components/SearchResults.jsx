@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { Database, Search, MapPin, Star, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Database, Search, MapPin, Star, ChevronRight, ChevronLeft, Menu, X } from 'lucide-react';
 
 const SearchResults = () => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useState({ q: '', location: '' });
   const [results, setResults] = useState([]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -49,16 +50,30 @@ const SearchResults = () => {
           <span className="text-xl text-gray-900">Data<span className="font-bold">BASES</span></span>
         </div>
         
-        <div className="flex items-center gap-2 sm:gap-4">
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Browse</button>
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Help</button>
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">List your practice</button>
-          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Log in</button>
-          <button className="bg-yellow-300 px-4 py-1 sm:px-6 sm:py-2 rounded-lg text-gray-900 text-sm sm:text-base">Sign up</button>
+        <div className="hidden md:flex items-center gap-4">
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Browse</button>
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Help</button>
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">List your practice</button>
+          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Log in</button>
+          <button className="bg-yellow-300 px-6 py-2 rounded-lg text-gray-900">Sign up</button>
         </div>
+
+        <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </nav>
 
-      <main className="w-full max-w-7xl mx-auto p-4 sm:p-8">
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-md">
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Browse</button>
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Help</button>
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">List your practice</button>
+          <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Log in</button>
+          <button className="w-full px-4 py-2 text-left bg-yellow-300 hover:bg-yellow-400">Sign up</button>
+        </div>
+      )}
+
+      <main className="w-full p-4 sm:p-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
           <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-0">{results.length} Lawyers</h1>
           <div className="flex items-center">
