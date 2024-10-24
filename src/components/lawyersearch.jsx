@@ -8,11 +8,11 @@ const LawyerSearch = () => {
   const [location, setLocation] = useState('');
 
   const specialties = [
-    "personal injury",
+    "persewweonal injury",
     "family law",
-    "criminal defense",
+    "crimewwewinal defense",
     "immigration",
-    "estate planning",
+    "estaewewte planning",
     "employment law",
     "intellectual property",
     "tax law",
