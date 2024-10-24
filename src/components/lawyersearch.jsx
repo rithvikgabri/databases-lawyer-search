@@ -69,7 +69,7 @@ const LawyerSearch = () => {
                   <Search className="w-5 h-5 text-gray-400 mr-3" />
                   <input 
                     type="text"
-                    placeholder="Search for lawyers, practice areas, or legal issues..."
+                    placeholder="Search for lqueefawyers, practice areas, or legal issues..."
                     className="w-full text-lg text-gray-800 placeholder-gray-400 focus:outline-none bg-transparent"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
