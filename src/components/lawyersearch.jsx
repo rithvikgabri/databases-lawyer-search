@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const LawyerSearch = () => {
   const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [location, setLocation] = useState('');
+  const [searchTerm, setSearchTerm] = useState('Traffic ticket');
+  const [location, setLocation] = useState('Palo Alto, CA');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSpecialty, setCurrentSpecialty] = useState(0);
 
