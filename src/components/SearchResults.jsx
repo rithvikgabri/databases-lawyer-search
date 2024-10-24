@@ -43,13 +43,13 @@ const SearchResults = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-yellow-50 via-blue-50 to-purple-50 font-sans font-light">
-      <nav className="w-full px-4 sm:px-8 py-4 flex flex-col sm:flex-row justify-between items-center bg-white shadow-sm">
-        <div className="flex items-center gap-2 mb-4 sm:mb-0">
+      <nav className="w-full px-4 sm:px-8 py-4 flex justify-between items-center bg-white shadow-sm">
+        <div className="flex items-center gap-2">
           <Database className="w-6 h-6 text-gray-900" />
           <span className="text-xl text-gray-900">Data<span className="font-bold">BASES</span></span>
         </div>
         
-        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Browse</button>
           <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Help</button>
           <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">List your practice</button>
@@ -58,7 +58,7 @@ const SearchResults = () => {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto p-4 sm:p-8">
+      <main className="w-full max-w-7xl mx-auto p-4 sm:p-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
           <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-0">{results.length} Lawyers</h1>
           <div className="flex items-center">

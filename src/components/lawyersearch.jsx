@@ -36,13 +36,13 @@ const LawyerSearch = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-yellow-50 via-blue-50 to-purple-50 font-sans font-light">
-      <nav className="w-full px-4 sm:px-8 py-4 flex flex-col sm:flex-row justify-between items-center">
-        <div className="flex items-center gap-2 mb-4 sm:mb-0">
+      <nav className="w-full px-4 sm:px-8 py-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
           <Database className="w-6 h-6 text-gray-900" />
           <span className="text-xl text-gray-900">Data<span className="font-bold">BASES</span></span>
         </div>
         
-        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Browse</button>
           <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Help</button>
           <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">List your practice</button>
@@ -51,63 +51,65 @@ const LawyerSearch = () => {
         </div>
       </nav>
 
-      <main className="w-full px-4 sm:px-8 mt-8 sm:mt-16 flex flex-col lg:flex-row justify-between items-center">
-        <div className="max-w-4xl mb-8 lg:mb-0">
-          <h1 className="text-4xl sm:text-6xl font-light text-gray-900 mb-6">
-            Find local{' '}
-            <span className="font-medium text-blue-600 transition-all duration-300">
-              {specialties[currentSpecialty]}
-            </span>
-            <br />
-            attorneys who match your needs
-          </h1>
+      <main className="w-full px-4 sm:px-8 mt-8 sm:mt-16">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center">
+          <div className="w-full lg:w-2/3 mb-8 lg:mb-0">
+            <h1 className="text-4xl sm:text-6xl font-light text-gray-900 mb-6">
+              Find local{' '}
+              <span className="font-medium text-blue-600 transition-all duration-300">
+                {specialties[currentSpecialty]}
+              </span>
+              <br />
+              attorneys who match your needs
+            </h1>
 
-          <form onSubmit={handleSearch} className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-6xl">
-            <div className="flex flex-col sm:flex-row items-center">
-              <div className="w-full sm:w-1/2 border-b sm:border-b-0 sm:border-r border-gray-200">
-                <div className="flex items-center p-4">
-                  <Search className="w-5 h-5 text-gray-400 mr-3" />
-                  <input 
-                    type="text"
-                    placeholder="Search for lqueefawyers, practice areas, or legal issues..."
-                    className="w-full text-lg text-gray-800 placeholder-gray-400 focus:outline-none bg-transparent"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
+            <form onSubmit={handleSearch} className="bg-white shadow-lg rounded-lg overflow-hidden w-full">
+              <div className="flex flex-col sm:flex-row items-center">
+                <div className="w-full sm:w-1/2 border-b sm:border-b-0 sm:border-r border-gray-200">
+                  <div className="flex items-center p-4">
+                    <Search className="w-5 h-5 text-gray-400 mr-3" />
+                    <input 
+                      type="text"
+                      placeholder="Search for lawyers, practice areas, or legal issues..."
+                      className="w-full text-lg text-gray-800 placeholder-gray-400 focus:outline-none bg-transparent"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="w-full sm:w-1/2">
-                <div className="flex items-center p-4">
-                  <MapPin className="w-5 h-5 text-gray-400 mr-3" />
-                  <input 
-                    type="text"
-                    placeholder="City, State, or Zip Code"
-                    className="w-full text-lg text-gray-800 placeholder-gray-400 focus:outline-none bg-transparent"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                  />
+                <div className="w-full sm:w-1/2">
+                  <div className="flex items-center p-4">
+                    <MapPin className="w-5 h-5 text-gray-400 mr-3" />
+                    <input 
+                      type="text"
+                      placeholder="City, State, or Zip Code"
+                      className="w-full text-lg text-gray-800 placeholder-gray-400 focus:outline-none bg-transparent"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
+                  </div>
                 </div>
+                <button type="submit" className="w-full sm:w-auto bg-yellow-300 p-4 hover:bg-yellow-400">
+                  <Search className="w-6 h-6 text-gray-900 mx-auto" />
+                </button>
               </div>
-              <button type="submit" className="w-full sm:w-auto bg-yellow-300 p-4 hover:bg-yellow-400">
-                <Search className="w-6 h-6 text-gray-900 mx-auto" />
-              </button>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
 
-        <div className="w-full max-w-[300px] lg:w-[400px] lg:h-[400px]">
-          <svg viewBox="0 0 100 100" className="w-full h-full" stroke="currentColor" fill="none">
-            <path d="M50,20 L20,50 L80,50 Z" className="text-blue-200" strokeWidth="1" />
-            <line x1="50" y1="20" x2="50" y2="80" className="text-blue-200" strokeWidth="1" />
-            <circle cx="50" cy="50" r="2" className="text-blue-300" fill="currentColor" />
-            <circle cx="20" cy="50" r="5" className="text-yellow-300" fill="currentColor" />
-            <circle cx="80" cy="50" r="5" className="text-yellow-300" fill="currentColor" />
-          </svg>
+          <div className="w-full lg:w-1/3 max-w-[300px] lg:max-w-[400px]">
+            <svg viewBox="0 0 100 100" className="w-full h-full" stroke="currentColor" fill="none">
+              <path d="M50,20 L20,50 L80,50 Z" className="text-blue-200" strokeWidth="1" />
+              <line x1="50" y1="20" x2="50" y2="80" className="text-blue-200" strokeWidth="1" />
+              <circle cx="50" cy="50" r="2" className="text-blue-300" fill="currentColor" />
+              <circle cx="20" cy="50" r="5" className="text-yellow-300" fill="currentColor" />
+              <circle cx="80" cy="50" r="5" className="text-yellow-300" fill="currentColor" />
+            </svg>
+          </div>
         </div>
       </main>
 
       <div className="w-full px-4 sm:px-8 py-8 sm:py-16 bg-white/50 mt-8 sm:mt-16">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <p className="text-lg sm:text-xl text-gray-800 mb-4">
             Meet DataBASES, the intelligent legal search platform built for modern
             legal professionals. Available nationwide. Free for everyone.
