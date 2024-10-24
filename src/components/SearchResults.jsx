@@ -42,53 +42,53 @@ const SearchResults = () => {
   }, [results]);
 
   return (
-    <div className="min-h-screen w-screen bg-gradient-to-br from-yellow-50 via-blue-50 to-purple-50 font-sans font-light">
-      <nav className="w-full px-8 py-4 flex justify-between items-center bg-white shadow-sm">
-        <div className="flex items-center gap-2">
+    <div className="min-h-screen w-full bg-gradient-to-br from-yellow-50 via-blue-50 to-purple-50 font-sans font-light">
+      <nav className="w-full px-4 sm:px-8 py-4 flex flex-col sm:flex-row justify-between items-center bg-white shadow-sm">
+        <div className="flex items-center gap-2 mb-4 sm:mb-0">
           <Database className="w-6 h-6 text-gray-900" />
           <span className="text-xl text-gray-900">Data<span className="font-bold">BASES</span></span>
         </div>
         
-        <div className="flex items-center gap-4">
-          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Browse</button>
-          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Help</button>
-          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">List your practice on DataBASES</button>
-          <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700">Log in</button>
-          <button className="bg-yellow-300 px-6 py-2 rounded-lg text-gray-900">Sign up</button>
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
+          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Browse</button>
+          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Help</button>
+          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">List your practice</button>
+          <button className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg text-gray-700 text-sm sm:text-base">Log in</button>
+          <button className="bg-yellow-300 px-4 py-1 sm:px-6 sm:py-2 rounded-lg text-gray-900 text-sm sm:text-base">Sign up</button>
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto p-8">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-semibold text-gray-900">{results.length} Lawyers</h1>
+      <main className="max-w-7xl mx-auto p-4 sm:p-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-0">{results.length} Lawyers</h1>
           <div className="flex items-center">
-            <span className="mr-2 text-gray-900">Today, Oct 24 - Wed, Nov 6</span>
-            <ChevronLeft className="w-5 h-5 text-gray-400" />
-            <ChevronRight className="w-5 h-5 text-gray-400" />
+            <span className="mr-2 text-gray-900 text-sm sm:text-base">Today, Oct 24 - Wed, Nov 6</span>
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
           </div>
         </div>
 
-        <div className="flex space-x-4 mb-4 overflow-x-auto">
+        <div className="flex flex-wrap gap-2 mb-4">
           {['I\'m flexible', 'Time of day', 'Practice area', 'Distance', 'In-person/video', 'Years of experience', 'Language'].map((filter) => (
-            <button key={filter} className="px-4 py-2 bg-white rounded-full border border-gray-300 text-gray-700 whitespace-nowrap">{filter}</button>
+            <button key={filter} className="px-3 py-1 bg-white rounded-full border border-gray-300 text-gray-700 text-sm whitespace-nowrap">{filter}</button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
           <div className="lg:col-span-2 space-y-4">
             {results.map((lawyer) => (
-              <div key={lawyer.id} className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-start">
-                  <img src={lawyer.image} alt={lawyer.name} className="w-36 h-36 rounded-lg mr-4 object-cover" />
-                  <div className="flex-grow">
-                    <h2 className="text-xl font-semibold text-gray-900">{lawyer.name}</h2>
+              <div key={lawyer.id} className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start">
+                  <img src={lawyer.image} alt={lawyer.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-lg mb-4 sm:mb-0 sm:mr-4 object-cover" />
+                  <div className="flex-grow text-center sm:text-left">
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-900">{lawyer.name}</h2>
                     <p className="text-gray-700">{lawyer.specialty}</p>
-                    <div className="flex items-center mt-1">
+                    <div className="flex items-center justify-center sm:justify-start mt-1">
                       <Star className="w-4 h-4 text-yellow-400 mr-1" />
                       <span className="font-semibold mr-2 text-gray-900">{lawyer.rating}</span>
                       <span className="text-gray-700">({lawyer.reviews} reviews)</span>
                     </div>
-                    <div className="flex items-center mt-1">
+                    <div className="flex items-center justify-center sm:justify-start mt-1">
                       <MapPin className="w-4 h-4 text-gray-700 mr-1" />
                       <span className="text-gray-700">{lawyer.distance} • {lawyer.address}</span>
                     </div>
@@ -107,7 +107,7 @@ const SearchResults = () => {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-4 sticky top-4">
               <h3 className="text-lg font-semibold mb-2 text-gray-900">Map</h3>
-              <div id="map" className="h-[calc(100vh-200px)]"></div>
+              <div id="map" className="h-[300px] sm:h-[calc(100vh-200px)]"></div>
             </div>
           </div>
         </div>
